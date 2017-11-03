@@ -2,6 +2,8 @@ function onReady() {
   const addToDoForm = document.getElementById('addToDoForm');
   const newToDoText = document.getElementById('newToDoText');
   const toDoList = document.getElementById('toDoList');
+  const deleteToDo = document.getElementById('deleteToDo');
+
 
   addToDoForm.addEventListener('submit', ()=> {
     event.preventDefault();
@@ -21,7 +23,16 @@ function onReady() {
     toDoList.appendChild(newLi);
     //empty the input
     newToDoText.value = '';
+  });
 
+  deleteToDo.addEventListener('click', ()=> {
+    event.preventDefault();
+    var input = document.querySelectorAll("INPUT");
+    for(var i = 0; i < input.length; i++) {
+      if(input[i].checked === true) {
+        input[i].parentNode.remove();
+      }
+    }
   });
 };
 
